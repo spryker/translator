@@ -5,16 +5,29 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Translator\Business;
+namespace Spryker\Service\Translator;
 
 use Generated\Shared\Transfer\LocaleTransfer;
-use Spryker\Zed\Kernel\Business\AbstractFacade;
+use Spryker\Service\Kernel\AbstractService;
+use Spryker\Service\Translator\Translator\TranslatorInterface;
 
 /**
- * @method \Spryker\Zed\Translator\Business\TranslatorBusinessFactory getFactory()
+ * @method \Spryker\Service\Translator\TranslatorServiceFactory getFactory()
  */
-class TranslatorFacade extends AbstractFacade implements TranslatorFacadeInterface
+class TranslatorService extends AbstractService implements TranslatorServiceInterface
 {
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @return \Spryker\Service\Translator\Translator\TranslatorInterface
+     */
+    public function getTranslator(): TranslatorInterface
+    {
+        return $this->getFactory()->createTranslator();
+    }
+
     /**
      * {@inheritdoc}
      *
@@ -24,7 +37,7 @@ class TranslatorFacade extends AbstractFacade implements TranslatorFacadeInterfa
      */
     public function generateTranslationCache(): void
     {
-        $this->getFactory()->getTranslatorService()->generateTranslationCache();
+        $this->getFactory()->createCacheGenerator()->generateTranslationCache();
     }
 
     /**
@@ -36,10 +49,12 @@ class TranslatorFacade extends AbstractFacade implements TranslatorFacadeInterfa
      */
     public function cleanTranslationCache(): void
     {
-        $this->getFactory()->getTranslatorService()->cleanTranslationCache();
+        $this->getFactory()->createCacheCleaner()->cleanTranslationCache();
     }
 
     /**
+     * {@inheritdoc}
+     *
      * @api
      *
      * @param string $keyName
@@ -48,20 +63,24 @@ class TranslatorFacade extends AbstractFacade implements TranslatorFacadeInterfa
      */
     public function hasTranslation($keyName): bool
     {
-        return $this->getFactory()->getTranslatorService()->hasTranslation($keyName);
+        return $this->getFactory()->createTranslationKeyManager()->hasKey($keyName);
     }
 
     /**
+     * {@inheritdoc}
+     *
      * @api
      *
      * @param string $keyName
      * @param array $data
      * @param \Generated\Shared\Transfer\LocaleTransfer|null $localeTransfer
      *
+     * @throws \Spryker\Zed\Glossary\Business\Exception\MissingTranslationException
+     *
      * @return string
      */
     public function translate($keyName, array $data = [], ?LocaleTransfer $localeTransfer = null): string
     {
-         return $this->getFactory()->getTranslatorService()->translate($keyName, $data, $localeTransfer);
+        // TODO: Implement translate() method.
     }
 }

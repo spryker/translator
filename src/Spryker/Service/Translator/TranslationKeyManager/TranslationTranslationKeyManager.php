@@ -5,19 +5,19 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Translator\Business\Key;
+namespace Spryker\Service\Translator\TranslationKeyManager;
 
-use Spryker\Zed\Translator\Business\Translator\TranslatorInterface;
+use Spryker\Service\Translator\Translator\TranslatorInterface;
 
-class KeyManager implements KeyManagerInterface
+class TranslationTranslationKeyManager implements TranslationKeyManagerInterface
 {
     /**
-     * @var \Spryker\Zed\Translator\Business\Translator\TranslatorInterface
+     * @var \Spryker\Service\Translator\Translator\TranslatorInterface
      */
     protected $translator;
 
     /**
-     * @param \Spryker\Zed\Translator\Business\Translator\TranslatorInterface $translator
+     * @param \Spryker\Service\Translator\Translator\TranslatorInterface $translator
      */
     public function __construct(TranslatorInterface $translator)
     {
@@ -29,7 +29,7 @@ class KeyManager implements KeyManagerInterface
      *
      * @return bool
      */
-    public function hasKey($keyName)
+    public function hasKey($keyName): bool
     {
         $locale = $this->translator->getLocale();
         $catalogue = $this->translator->getCatalogue($locale);

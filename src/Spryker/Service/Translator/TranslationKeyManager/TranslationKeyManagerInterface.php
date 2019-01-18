@@ -5,14 +5,14 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Translator\Business\Key;
+namespace Spryker\Service\Translator\TranslationKeyManager;
 
-interface KeyManagerInterface
+interface TranslationKeyManagerInterface
 {
     /**
      * @param string $keyName
      *
      * @return bool
      */
-    public function hasKey($keyName);
+    public function hasKey($keyName): bool;
 }

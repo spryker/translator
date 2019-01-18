@@ -5,10 +5,10 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Translator;
+namespace Spryker\Service\Translator;
 
+use Spryker\Service\Kernel\AbstractBundleConfig;
 use Spryker\Shared\Translator\TranslatorConstants;
-use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class TranslatorConfig extends AbstractBundleConfig
 {

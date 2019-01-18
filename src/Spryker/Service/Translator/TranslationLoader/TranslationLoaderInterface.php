@@ -5,17 +5,14 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Translator\Business\Finder;
+namespace Spryker\Service\Translator\TranslationLoader;
 
-interface TranslationFinderInterface
+use Symfony\Component\Translation\Loader\LoaderInterface;
+
+interface TranslationLoaderInterface extends LoaderInterface
 {
-    /**
-     * @return array
-     */
-    public function getTranslationFiles(): array;
-
     /**
      * @return string
      */
-    public function getFileFormat(): string;
+    public function getFormat(): string;
 }

@@ -5,12 +5,12 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Translator\Business\Cache;
+namespace Spryker\Service\Translator\TranslationCache;
 
-interface CacheClearerInterface
+interface CacheGeneratorInterface
 {
     /**
      * @return void
      */
-    public function clearCache(): void;
+    public function generateTranslationCache(): void;
 }

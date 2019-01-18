@@ -5,12 +5,23 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Translator\Business;
+namespace Spryker\Service\Translator;
 
 use Generated\Shared\Transfer\LocaleTransfer;
+use Spryker\Service\Translator\Translator\TranslatorInterface;
 
-interface TranslatorFacadeInterface
+interface TranslatorServiceInterface
 {
+    /**
+     * Specification:
+     *  - Returns Translator object.
+     *
+     * @api
+     *
+     * @return \Spryker\Service\Translator\Translator\TranslatorInterface
+     */
+    public function getTranslator(): TranslatorInterface;
+
     /**
      * Specification:
      * - Generates translation cache for Zed for all store's locales.

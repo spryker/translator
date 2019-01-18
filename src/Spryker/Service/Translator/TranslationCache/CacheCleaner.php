@@ -5,45 +5,31 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Translator\Business\Cache;
+namespace Spryker\Service\Translator\TranslationCache;
 
-use Spryker\Zed\Translator\TranslatorConfig;
+use Spryker\Service\Translator\TranslatorConfig;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
-class CacheClearer implements CacheClearerInterface
+class CacheCleaner implements CacheCleanerInterface
 {
     /**
-     * @var \Spryker\Zed\Translator\TranslatorConfig
+     * @var \Spryker\Service\Translator\TranslatorConfig
      */
     protected $config;
 
     /**
-     * @var \Symfony\Component\Filesystem\Filesystem
+     * @param \Spryker\Service\Translator\TranslatorConfig $config
      */
-    protected $fileSystem;
-
-    /**
-     * @var \Symfony\Component\Finder\Finder
-     */
-    protected $finder;
-
-    /**
-     * @param \Spryker\Zed\Translator\TranslatorConfig $config
-     * @param \Symfony\Component\Filesystem\Filesystem $fileSystem
-     * @param \Symfony\Component\Finder\Finder $finder
-     */
-    public function __construct(TranslatorConfig $config, Filesystem $fileSystem, Finder $finder)
+    public function __construct(TranslatorConfig $config)
     {
         $this->config = $config;
-        $this->fileSystem = $fileSystem;
-        $this->finder = $finder;
     }
 
     /**
      * @return void
      */
-    public function clearCache(): void
+    public function cleanTranslationCache(): void
     {
         $this->clearDirectory($this->config->getCacheDir());
     }
@@ -59,7 +45,8 @@ class CacheClearer implements CacheClearerInterface
             return;
         }
 
-        $this->fileSystem->remove($this->findFiles($directory));
+        $fileSystem = new Filesystem();
+        $fileSystem->remove($this->findFiles($directory));
     }
 
     /**
@@ -69,7 +56,7 @@ class CacheClearer implements CacheClearerInterface
      */
     protected function findFiles(string $directory): Finder
     {
-        $finder = clone $this->finder;
+        $finder = new Finder();
         $finder
             ->in($directory)
             ->depth(0);
