@@ -9,37 +9,25 @@ namespace Spryker\Zed\Translator\Communication\Plugin\Application;
 
 use Spryker\Service\Container\ContainerInterface;
 use Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface;
-use Spryker\Shared\ApplicationExtension\Dependency\Plugin\BootableApplicationPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
- * @deprecated Use `Spryker\Zed\Translator\Communication\Plugin\Twig\TranslatorTwigPlugin` instead.
- *
- * @method \Spryker\Zed\Translator\TranslatorConfig getConfig()
  * @method \Spryker\Zed\Translator\Communication\TranslatorCommunicationFactory getFactory()
  * @method \Spryker\Zed\Translator\Business\TranslatorFacadeInterface getFacade()
+ * @method \Spryker\Zed\Translator\TranslatorConfig getConfig()
  */
-class ZedTranslatorPlugin extends AbstractPlugin implements ApplicationPluginInterface, BootableApplicationPluginInterface
+class TranslatorApplicationPlugin extends AbstractPlugin implements ApplicationPluginInterface
 {
+    protected const SERVICE_TRANSLATOR = 'translator';
+
     /**
-     * {@inheritdoc}
-     *  - Extends Application with Translator instance.
-     *
-     * @api
-     *
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return \Spryker\Service\Container\ContainerInterface
+     * Added for BC reason only.
      */
-    public function boot(ContainerInterface $container): ContainerInterface
-    {
-        $this->getFacade()->prepareTranslatorService();
-
-        return $container;
-    }
+    protected const BC_FEATURE_FLAG_TWIG_TRANSLATOR = 'BC_FEATURE_FLAG_TWIG_TRANSLATOR';
 
     /**
      * {@inheritdoc}
+     * - Adds `translator` service.
      *
      * @api
      *
@@ -49,6 +37,11 @@ class ZedTranslatorPlugin extends AbstractPlugin implements ApplicationPluginInt
      */
     public function provide(ContainerInterface $container): ContainerInterface
     {
+        $container->set(static::BC_FEATURE_FLAG_TWIG_TRANSLATOR, false);
+        $container->set(static::SERVICE_TRANSLATOR, function (ContainerInterface $container) {
+            return $this->getFactory()->getTranslatorPlugin();
+        });
+
         return $container;
     }
 }
