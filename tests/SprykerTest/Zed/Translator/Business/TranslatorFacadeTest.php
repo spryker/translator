@@ -82,15 +82,11 @@ class TranslatorFacadeTest extends Unit
     protected function getFactoryMock(): TranslatorBusinessFactory
     {
         $factoryMock = $this->getMockBuilder(TranslatorBusinessFactory::class)
-            ->addMethods(['getStore'])
             ->onlyMethods(['getConfig', 'getLocaleFacade'])
             ->getMock();
 
         $factoryMock->method('getConfig')
             ->willReturn($this->getConfigMock());
-
-        $factoryMock->method('getStore')
-            ->willReturn($this->getStoreMock());
 
         $factoryMock->method('getLocaleFacade')
             ->willReturn($this->getLocaleFacadeMock());
@@ -140,11 +136,9 @@ class TranslatorFacadeTest extends Unit
         $localeFacadeMock = $this->getMockBuilder(TranslatorToLocaleFacadeBridge::class)
             ->enableOriginalConstructor()
             ->setConstructorArgs([$this->tester->getLocator()->locale()->facade()])
-            ->addMethods(['getCurrentLocale'])
             ->onlyMethods(['getSupportedLocaleCodes'])
             ->getMock();
 
-        $localeFacadeMock->method('getCurrentLocale')->willReturn('de_DE');
         $localeFacadeMock->method('getSupportedLocaleCodes')->willReturn(['de_DE']);
 
         return $localeFacadeMock;
