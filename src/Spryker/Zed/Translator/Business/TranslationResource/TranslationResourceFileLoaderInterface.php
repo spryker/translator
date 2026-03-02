@@ -11,21 +11,10 @@ use Spryker\Zed\Translator\Business\TranslationLoader\TranslationLoaderInterface
 
 interface TranslationResourceFileLoaderInterface
 {
-    /**
-     * @return string|null
-     */
     public function getDomain(): ?string;
 
-    /**
-     * @param string $filename
-     *
-     * @return string|null
-     */
     public function findLocaleFromFilename(string $filename): ?string;
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslationLoader\TranslationLoaderInterface
-     */
     public function getLoader(): TranslationLoaderInterface;
 
     /**

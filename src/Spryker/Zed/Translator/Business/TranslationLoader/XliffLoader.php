@@ -16,9 +16,6 @@ class XliffLoader extends SymfonyXliffFileLoader implements TranslationLoaderInt
      */
     protected const LOADER_FORMAT = 'xlf';
 
-    /**
-     * @return string
-     */
     public function getFormat(): string
     {
         return static::LOADER_FORMAT;

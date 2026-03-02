@@ -11,8 +11,5 @@ use Symfony\Component\Translation\Loader\LoaderInterface;
 
 interface TranslationLoaderInterface extends LoaderInterface
 {
-    /**
-     * @return string
-     */
     public function getFormat(): string;
 }

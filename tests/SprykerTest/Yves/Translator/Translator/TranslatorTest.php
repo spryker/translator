@@ -52,9 +52,6 @@ class TranslatorTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testTransWithANonExistingGlossaryKeyWillReturnKeyAsTranslation(): void
     {
         // Arrange
@@ -68,9 +65,6 @@ class TranslatorTest extends Unit
         $this->assertSame(static::NON_EXISTIN_GLOSSARY_KEY, $result);
     }
 
-    /**
-     * @return void
-     */
     public function testTransWithFallbackTranslation(): void
     {
         // Arrange
@@ -86,9 +80,6 @@ class TranslatorTest extends Unit
         $this->assertSame('Fallback successful!', $result);
     }
 
-    /**
-     * @return void
-     */
     public function testTransFallbackExceptionWhenAnEmptyArrayIsProvided(): void
     {
         // Arrange
@@ -104,11 +95,6 @@ class TranslatorTest extends Unit
         $translator->trans('test', ['__forward_compatibility_translation' => []]);
     }
 
-    /**
-     * @param string $glossaryKey
-     *
-     * @return void
-     */
     protected function assertGlossaryKeyDoesNotExist(string $glossaryKey): void
     {
         $this->tester->assertStorageNotHasKey(static::TRANSLATION_KEY_PREFIX . $glossaryKey);
@@ -132,9 +118,6 @@ class TranslatorTest extends Unit
             ->getMock();
     }
 
-    /**
-     * @return \Spryker\Yves\Translator\Translator\Translator
-     */
     protected function getTranslator(): Translator
     {
         $translatorToGlossaryStorageClientBridge = new TranslatorToGlossaryStorageClientBridge($this->tester->getLocator()->glossaryStorage()->client());

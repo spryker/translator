@@ -32,9 +32,6 @@ class TranslatorFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testCacheGeneratorGeneratesCache(): void
     {
         // Assign
@@ -47,9 +44,6 @@ class TranslatorFacadeTest extends Unit
         $this->tester->assertSame(2, $this->tester->findFiles(codecept_output_dir())->count());
     }
 
-    /**
-     * @return void
-     */
     public function testCacheCleanerCleansCache(): void
     {
         // Assign
@@ -64,9 +58,6 @@ class TranslatorFacadeTest extends Unit
         $this->tester->assertSame(0, $this->tester->findFiles(codecept_output_dir())->count());
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslatorFacadeInterface
-     */
     protected function getFacadeMock(): TranslatorFacadeInterface
     {
         /** @var \Spryker\Zed\Translator\Business\TranslatorFacadeInterface|\Spryker\Zed\Kernel\Business\AbstractFacade $facade */
@@ -144,9 +135,6 @@ class TranslatorFacadeTest extends Unit
         return $localeFacadeMock;
     }
 
-    /**
-     * @return void
-     */
     protected function tearDown(): void
     {
         $this->tester->clearOutputDirectory();

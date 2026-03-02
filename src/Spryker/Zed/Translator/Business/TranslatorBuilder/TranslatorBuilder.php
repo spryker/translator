@@ -25,11 +25,6 @@ class TranslatorBuilder implements TranslatorBuilderInterface
         $this->translationResourceFileLoaders = $translationResourceFileLoaders;
     }
 
-    /**
-     * @param \Spryker\Zed\Translator\Business\Translator\TranslatorInterface $translator
-     *
-     * @return \Spryker\Zed\Translator\Business\Translator\TranslatorInterface
-     */
     public function buildTranslator(TranslatorInterface $translator): TranslatorInterface
     {
         $translator = $this->initializeResources($translator);
@@ -37,11 +32,6 @@ class TranslatorBuilder implements TranslatorBuilderInterface
         return $translator;
     }
 
-    /**
-     * @param \Spryker\Zed\Translator\Business\Translator\TranslatorInterface $translator
-     *
-     * @return \Spryker\Zed\Translator\Business\Translator\TranslatorInterface
-     */
     protected function initializeResources(TranslatorInterface $translator): TranslatorInterface
     {
         foreach ($this->translationResourceFileLoaders as $translationResourceFileLoader) {
@@ -54,13 +44,6 @@ class TranslatorBuilder implements TranslatorBuilderInterface
         return $translator;
     }
 
-    /**
-     * @param \Spryker\Zed\Translator\Business\Translator\TranslatorInterface $translator
-     * @param \Spryker\Zed\Translator\Business\TranslationResource\TranslationResourceFileLoaderInterface $translationResourceFileLoader
-     * @param string $loaderFormat
-     *
-     * @return \Spryker\Zed\Translator\Business\Translator\TranslatorInterface
-     */
     protected function addResources(
         TranslatorInterface $translator,
         TranslationResourceFileLoaderInterface $translationResourceFileLoader,

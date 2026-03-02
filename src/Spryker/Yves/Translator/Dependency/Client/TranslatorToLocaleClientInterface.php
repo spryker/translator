@@ -9,8 +9,5 @@ namespace Spryker\Yves\Translator\Dependency\Client;
 
 interface TranslatorToLocaleClientInterface
 {
-    /**
-     * @return string
-     */
     public function getCurrentLocale(): string;
 }

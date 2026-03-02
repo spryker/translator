@@ -9,8 +9,5 @@ namespace Spryker\Zed\Translator\Business\Translator;
 
 interface TranslatorPreparatorInterface
 {
-    /**
-     * @return void
-     */
     public function prepareTranslatorService(): void;
 }

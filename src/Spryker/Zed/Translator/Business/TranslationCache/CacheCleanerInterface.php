@@ -9,8 +9,5 @@ namespace Spryker\Zed\Translator\Business\TranslationCache;
 
 interface CacheCleanerInterface
 {
-    /**
-     * @return void
-     */
     public function cleanTranslationCache(): void;
 }

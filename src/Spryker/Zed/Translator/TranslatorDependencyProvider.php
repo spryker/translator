@@ -47,11 +47,6 @@ class TranslatorDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const PLUGIN_TRANSLATOR = 'PLUGIN_TRANSLATOR';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -62,11 +57,6 @@ class TranslatorDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
@@ -80,11 +70,6 @@ class TranslatorDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addTranslator(Container $container): Container
     {
         $container->set(static::SERVICE_TRANSLATOR, function (ContainerInterface $container) {
@@ -110,11 +95,6 @@ class TranslatorDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addLocaleFacade(Container $container): Container
     {
         $container->set(static::FACADE_LOCALE, function (Container $container) {
@@ -124,11 +104,6 @@ class TranslatorDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addTranslatorPlugin(Container $container): Container
     {
         $container->set(static::PLUGIN_TRANSLATOR, function () {
@@ -142,17 +117,11 @@ class TranslatorDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @return \Spryker\Shared\TranslatorExtension\Dependency\Plugin\Translator\TranslatorPluginInterface
-     */
     protected function getTranslatorPlugin(): TranslatorPluginInterface
     {
         return new TranslatorPlugin();
     }
 
-    /**
-     * @return \Spryker\Shared\TranslatorExtension\Dependency\Plugin\TranslatorPluginInterface
-     */
     protected function getLegacyTranslatorPlugin(): LegacyTranslatorPluginInterface
     {
         return new LegacyTranslatorPlugin();

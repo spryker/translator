@@ -28,11 +28,6 @@ class CsvResourceFileLoader implements TranslationResourceFileLoaderInterface
      */
     protected $translatorConfig;
 
-    /**
-     * @param \Spryker\Zed\Translator\Business\TranslationLoader\TranslationLoaderInterface $translationLoader
-     * @param \Spryker\Zed\Translator\Business\TranslationFinder\TranslationFileFinderInterface $translationFileFinder
-     * @param \Spryker\Zed\Translator\TranslatorConfig $translatorConfig
-     */
     public function __construct(
         TranslationLoaderInterface $translationLoader,
         TranslationFileFinderInterface $translationFileFinder,
@@ -43,19 +38,11 @@ class CsvResourceFileLoader implements TranslationResourceFileLoaderInterface
         $this->translatorConfig = $translatorConfig;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDomain(): ?string
     {
         return null;
     }
 
-    /**
-     * @param string $filename
-     *
-     * @return string|null
-     */
     public function findLocaleFromFilename(string $filename): ?string
     {
         $pathInfo = pathinfo($filename);
@@ -63,9 +50,6 @@ class CsvResourceFileLoader implements TranslationResourceFileLoaderInterface
         return $pathInfo['filename'];
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslationLoader\TranslationLoaderInterface
-     */
     public function getLoader(): TranslationLoaderInterface
     {
         return $this->translationLoader;

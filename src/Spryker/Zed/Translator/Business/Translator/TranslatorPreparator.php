@@ -25,10 +25,6 @@ class TranslatorPreparator implements TranslatorPreparatorInterface
      */
     protected $translator;
 
-    /**
-     * @param \Spryker\Shared\Kernel\Communication\Application $application
-     * @param \Spryker\Zed\Translator\Business\Translator\TranslatorInterface $translator
-     */
     public function __construct(
         Application $application,
         TranslatorInterface $translator
@@ -37,9 +33,6 @@ class TranslatorPreparator implements TranslatorPreparatorInterface
         $this->translator = $translator;
     }
 
-    /**
-     * @return void
-     */
     public function prepareTranslatorService(): void
     {
         $translator = $this->translator;

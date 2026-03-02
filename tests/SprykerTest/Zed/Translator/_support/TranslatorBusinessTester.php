@@ -29,9 +29,6 @@ class TranslatorBusinessTester extends Actor
 {
     use _generated\TranslatorBusinessTesterActions;
 
-    /**
-     * @return void
-     */
     public function clearOutputDirectory(): void
     {
         $directory = codecept_output_dir();
@@ -44,11 +41,6 @@ class TranslatorBusinessTester extends Actor
         $fileSystem->remove($this->findFiles($directory));
     }
 
-    /**
-     * @param string $directory
-     *
-     * @return \Symfony\Component\Finder\Finder
-     */
     public function findFiles(string $directory): Finder
     {
         $finder = new Finder();

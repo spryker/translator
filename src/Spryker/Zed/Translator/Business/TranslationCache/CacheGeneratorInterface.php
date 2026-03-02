@@ -9,8 +9,5 @@ namespace Spryker\Zed\Translator\Business\TranslationCache;
 
 interface CacheGeneratorInterface
 {
-    /**
-     * @return void
-     */
     public function generateTranslationCache(): void;
 }

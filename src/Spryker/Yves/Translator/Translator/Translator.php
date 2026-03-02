@@ -34,10 +34,6 @@ class Translator implements TranslatorInterface
      */
     protected $localeName;
 
-    /**
-     * @param \Spryker\Yves\Translator\Dependency\Client\TranslatorToGlossaryStorageClientInterface $glossaryClient
-     * @param \Spryker\Yves\Translator\Dependency\Client\TranslatorToLocaleClientInterface $localeClient
-     */
     public function __construct(TranslatorToGlossaryStorageClientInterface $glossaryClient, TranslatorToLocaleClientInterface $localeClient)
     {
         $this->glossaryClient = $glossaryClient;
@@ -120,9 +116,6 @@ class Translator implements TranslatorInterface
         return $this->glossaryClient->translate($ids[1], $locale, $parameters);
     }
 
-    /**
-     * @return string
-     */
     protected function getLocaleName(): string
     {
         if (!$this->localeName) {

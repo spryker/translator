@@ -16,9 +16,6 @@ class CsvFileLoader extends SymfonyCsvFileLoader implements TranslationLoaderInt
      */
     protected const LOADER_FORMAT = 'csv';
 
-    /**
-     * @return string
-     */
     public function getFormat(): string
     {
         return static::LOADER_FORMAT;

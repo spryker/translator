@@ -39,9 +39,6 @@ class TranslatorBusinessFactory extends AbstractBusinessFactory
      */
     protected array $translators = [];
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslationFinder\TranslationFileFinderInterface
-     */
     public function createTranslationFileFinder(): TranslationFileFinderInterface
     {
         return new TranslationFileFinder();
@@ -58,9 +55,6 @@ class TranslatorBusinessFactory extends AbstractBusinessFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslationResource\TranslationResourceFileLoaderInterface
-     */
     public function createCsvResourceFileLoader(): TranslationResourceFileLoaderInterface
     {
         return new CsvResourceFileLoader(
@@ -70,9 +64,6 @@ class TranslatorBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslationResource\TranslationResourceFileLoaderInterface
-     */
     public function createValidatorResourceFileLoader(): TranslationResourceFileLoaderInterface
     {
         return new ValidatorResourceFileLoader(
@@ -83,9 +74,6 @@ class TranslatorBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslationLoader\TranslationLoaderInterface
-     */
     public function createCsvFileLoader(): TranslationLoaderInterface
     {
         $csvFileLoader = new CsvFileLoader();
@@ -94,9 +82,6 @@ class TranslatorBusinessFactory extends AbstractBusinessFactory
         return $csvFileLoader;
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslationLoader\TranslationLoaderInterface
-     */
     public function createXlfFileLoader(): TranslationLoaderInterface
     {
         return new XliffLoader();
@@ -136,9 +121,6 @@ class TranslatorBusinessFactory extends AbstractBusinessFactory
         return $this->translators[$localeName];
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslatorBuilder\TranslatorBuilderInterface
-     */
     public function createTranslationBuilder(): TranslatorBuilderInterface
     {
         return new TranslatorBuilder(
@@ -156,9 +138,6 @@ class TranslatorBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(TranslatorDependencyProvider::APPLICATION);
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslationCache\CacheCleanerInterface
-     */
     public function createTranslationCacheCleaner(): CacheCleanerInterface
     {
         return new CacheCleaner(
@@ -166,9 +145,6 @@ class TranslatorBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslationCache\CacheGeneratorInterface
-     */
     public function createTranslationCacheGenerator(): CacheGeneratorInterface
     {
         return new CacheGenerator(
@@ -189,9 +165,6 @@ class TranslatorBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Dependency\Facade\TranslatorToLocaleFacadeInterface
-     */
     public function getLocaleFacade(): TranslatorToLocaleFacadeInterface
     {
         return $this->getProvidedDependency(TranslatorDependencyProvider::FACADE_LOCALE);

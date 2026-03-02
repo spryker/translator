@@ -38,17 +38,11 @@ class TranslatorCommunicationFactory extends AbstractCommunicationFactory
         return $this->getProvidedDependency(TranslatorDependencyProvider::SERVICE_TRANSLATOR);
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Dependency\Facade\TranslatorToLocaleFacadeInterface
-     */
     public function getLocaleFacade(): TranslatorToLocaleFacadeInterface
     {
         return $this->getProvidedDependency(TranslatorDependencyProvider::FACADE_LOCALE);
     }
 
-    /**
-     * @return \Twig\Extension\AbstractExtension
-     */
     public function createTwigTranslationExtension(): AbstractExtension
     {
         return new TranslationExtension($this->getTranslatorPlugin());

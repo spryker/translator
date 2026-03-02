@@ -11,10 +11,5 @@ use Spryker\Zed\Translator\Business\Translator\TranslatorInterface;
 
 interface TranslatorBuilderInterface
 {
-    /**
-     * @param \Spryker\Zed\Translator\Business\Translator\TranslatorInterface $translator
-     *
-     * @return \Spryker\Zed\Translator\Business\Translator\TranslatorInterface
-     */
     public function buildTranslator(TranslatorInterface $translator): TranslatorInterface;
 }

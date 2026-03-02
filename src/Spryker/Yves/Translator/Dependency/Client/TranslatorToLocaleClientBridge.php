@@ -22,9 +22,6 @@ class TranslatorToLocaleClientBridge implements TranslatorToLocaleClientInterfac
         $this->localeClient = $localeClient;
     }
 
-    /**
-     * @return string
-     */
     public function getCurrentLocale(): string
     {
         return $this->localeClient->getCurrentLocale();

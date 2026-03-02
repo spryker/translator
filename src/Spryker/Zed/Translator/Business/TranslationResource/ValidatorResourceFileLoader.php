@@ -38,12 +38,6 @@ class ValidatorResourceFileLoader implements TranslationResourceFileLoaderInterf
      */
     protected $locales;
 
-    /**
-     * @param \Spryker\Zed\Translator\Business\TranslationLoader\TranslationLoaderInterface $translationLoader
-     * @param \Spryker\Zed\Translator\Business\TranslationFinder\TranslationFileFinderInterface $translationFileFinder
-     * @param \Spryker\Zed\Translator\TranslatorConfig $translatorConfig
-     * @param array $locales
-     */
     public function __construct(
         TranslationLoaderInterface $translationLoader,
         TranslationFileFinderInterface $translationFileFinder,
@@ -56,19 +50,11 @@ class ValidatorResourceFileLoader implements TranslationResourceFileLoaderInterf
         $this->locales = $locales;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDomain(): ?string
     {
         return static::TRANSLATION_DOMAIN;
     }
 
-    /**
-     * @param string $filename
-     *
-     * @return string|null
-     */
     public function findLocaleFromFilename(string $filename): ?string
     {
         $pathInfo = pathinfo($filename);
@@ -77,9 +63,6 @@ class ValidatorResourceFileLoader implements TranslationResourceFileLoaderInterf
         return $this->locales[$filenameParts[1]] ?? null;
     }
 
-    /**
-     * @return \Spryker\Zed\Translator\Business\TranslationLoader\TranslationLoaderInterface
-     */
     public function getLoader(): TranslationLoaderInterface
     {
         return $this->translationLoader;

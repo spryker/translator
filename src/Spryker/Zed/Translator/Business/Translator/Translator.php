@@ -29,12 +29,6 @@ class Translator extends SymfonyTranslator implements TranslatorInterface
      */
     protected $translatorConfig;
 
-    /**
-     * @param \Spryker\Zed\Translator\Business\TranslatorBuilder\TranslatorBuilderInterface $translatorBuilder
-     * @param string $locale
-     * @param \Spryker\Zed\Translator\TranslatorConfig $translatorConfig
-     * @param \Symfony\Component\Translation\Formatter\MessageFormatterInterface|null $formatter
-     */
     public function __construct(
         TranslatorBuilderInterface $translatorBuilder,
         string $locale,
@@ -68,12 +62,6 @@ class Translator extends SymfonyTranslator implements TranslatorInterface
         parent::initializeCatalogue($locale);
     }
 
-    /**
-     * @param string $keyName
-     * @param string $locale
-     *
-     * @return bool
-     */
     public function has(string $keyName, string $locale): bool
     {
         return $this->getCatalogue($locale)->defines($keyName);

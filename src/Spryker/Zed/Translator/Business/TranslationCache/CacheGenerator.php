@@ -22,9 +22,6 @@ class CacheGenerator implements CacheGeneratorInterface
         $this->translatorCollection = $translatorCollection;
     }
 
-    /**
-     * @return void
-     */
     public function generateTranslationCache(): void
     {
         foreach ($this->translatorCollection as $translator) {

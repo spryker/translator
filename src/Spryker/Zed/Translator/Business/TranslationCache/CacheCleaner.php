@@ -18,27 +18,16 @@ class CacheCleaner implements CacheCleanerInterface
      */
     protected $config;
 
-    /**
-     * @param \Spryker\Zed\Translator\TranslatorConfig $config
-     */
     public function __construct(TranslatorConfig $config)
     {
         $this->config = $config;
     }
 
-    /**
-     * @return void
-     */
     public function cleanTranslationCache(): void
     {
         $this->clearDirectory($this->config->getTranslatorCacheDirectory());
     }
 
-    /**
-     * @param string $directory
-     *
-     * @return void
-     */
     protected function clearDirectory(string $directory): void
     {
         if (!file_exists($directory)) {
@@ -49,11 +38,6 @@ class CacheCleaner implements CacheCleanerInterface
         $fileSystem->remove($this->findFiles($directory));
     }
 
-    /**
-     * @param string $directory
-     *
-     * @return \Symfony\Component\Finder\Finder
-     */
     protected function findFiles(string $directory): Finder
     {
         $finder = new Finder();
