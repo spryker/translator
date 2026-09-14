@@ -13,6 +13,7 @@ use Spryker\Zed\Translator\Business\TranslatorBusinessFactory;
 use Spryker\Zed\Translator\Business\TranslatorFacadeInterface;
 use Spryker\Zed\Translator\Dependency\Facade\TranslatorToLocaleFacadeBridge;
 use Spryker\Zed\Translator\TranslatorConfig;
+use Symfony\Component\Config\Resource\SkippingResourceChecker;
 
 /**
  * Auto-generated group annotations
@@ -41,7 +42,20 @@ class TranslatorFacadeTest extends Unit
         $this->getFacadeMock()->generateTranslationCache();
 
         // Assert
-        $this->tester->assertSame(2, $this->tester->findFiles(codecept_output_dir())->count());
+        $this->tester->assertSame($this->getExpectedCacheFileCount(), $this->tester->findFiles(codecept_output_dir())->count());
+    }
+
+    protected function getExpectedCacheFileCount(): int
+    {
+        // symfony/config 7.2+ writes an additional `*.meta.json` file next to the cache file and
+        // its `*.meta` sidecar (ResourceCheckerConfigCache::write()); 6.4 writes only the two.
+        // SkippingResourceChecker was added in the same 7.2 release, so its presence is a reliable,
+        // dependency-free proxy for "is the installed symfony/config new enough to do this".
+        if (class_exists(SkippingResourceChecker::class)) {
+            return 3;
+        }
+
+        return 2;
     }
 
     public function testCacheCleanerCleansCache(): void
