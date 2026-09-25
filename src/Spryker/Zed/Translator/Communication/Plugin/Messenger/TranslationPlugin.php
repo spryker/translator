@@ -9,7 +9,7 @@ namespace Spryker\Zed\Translator\Communication\Plugin\Messenger;
 
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\MessengerExtension\Dependency\Plugin\TranslationPluginInterface;
-use Spryker\Zed\Translator\Business\Translator\Translator;
+use Symfony\Component\Translation\TranslatorBagInterface;
 
 /**
  * @method \Spryker\Zed\Translator\Communication\TranslatorCommunicationFactory getFactory()
@@ -31,7 +31,9 @@ class TranslationPlugin extends AbstractPlugin implements TranslationPluginInter
     {
         $translator = $this->getTranslator();
 
-        if ($translator instanceof Translator) {
+        // Any Symfony translator (including `Translator`) answers through its catalogue; only
+        // Spryker's own translator plugins expose `has()`.
+        if ($translator instanceof TranslatorBagInterface) {
             return $translator->getCatalogue($this->getLocaleName())->has($keyName);
         }
 
