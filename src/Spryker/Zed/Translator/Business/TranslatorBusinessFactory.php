@@ -106,12 +106,10 @@ class TranslatorBusinessFactory extends AbstractBusinessFactory
      */
     public function createTranslator(?string $localeName = null)
     {
-        $localeName = $localeName ?? $this->getLocaleFacade()->getCurrentLocaleName();
-
         if (!isset($this->translators[$localeName])) {
             $translator = new Translator(
                 $this->createTranslationBuilder(),
-                $localeName,
+                $localeName ?? $this->getLocaleFacade()->getCurrentLocaleName(),
                 $this->getConfig(),
             );
 
