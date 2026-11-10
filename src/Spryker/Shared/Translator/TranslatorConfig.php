@@ -7,9 +7,9 @@
 
 namespace Spryker\Shared\Translator;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class TranslatorConfig extends AbstractBundleConfig
+class TranslatorConfig extends AbstractSharedConfig
 {
     /**
      * @api
